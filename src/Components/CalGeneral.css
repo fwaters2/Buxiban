@@ -1,0 +1,16 @@
+table{
+    background-color:lightgray;
+    margin: 2px;
+    border: 2px solid black;
+    width:98%
+}
+thead{
+    font-weight:bold;
+    background-color: lightblue;
+}
+tr{
+    
+}
+tbody td{
+    border:2px solid black;
+}

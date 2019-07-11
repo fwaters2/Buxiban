@@ -1,0 +1,100 @@
+import React, { Component } from "react";
+import "./Chatroom.css";
+import Messages from "./Chat/Messages";
+import Firebase from "../Utils/Firebase";
+import { thisExpression } from "@babel/types";
+
+export default class Chatroom extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: "Guest",
+      newText: "",
+      messages: [],
+      newUser: ""
+    };
+  }
+  componentDidMount() {
+    const db = Firebase.firestore();
+    var newMessages = [];
+    db.collection("Messages")
+      .orderBy("id", "desc")
+      .onSnapshot(snapshot => {
+        snapshot.forEach(doc => {
+          newMessages.push({
+            text: doc.data().text,
+            user: doc.data().user,
+            time: doc.data().id
+          });
+        });
+        this.setState({ messages: newMessages });
+        newMessages = [];
+      });
+  }
+  handleChange = e => {
+    this.setState({
+      newText: e.target.value
+    });
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    const db = Firebase.firestore();
+    db.collection("Messages").add({
+      id: Date(),
+      text: this.state.newText,
+      user: this.state.user
+    });
+    this.setState({
+      newText: ""
+    });
+  };
+  handleChangeUser = e => {
+    this.setState({
+      newUser: e.target.value
+    });
+  };
+  handleNewUser = e => {
+    e.preventDefault();
+    this.setState({
+      user: this.state.newUser,
+      newUser:""
+    });
+  };
+  render() {
+    return (
+      <div className="Chatroom-Container">
+        <div className="Chat-Header">
+          <div className="CurrentUser">Signed in as<br/><strong>{this.state.user}</strong></div>
+          <h3>Chat Room</h3>
+          <form className="NewUser" onSubmit={this.handleNewUser}>
+            <input
+              placeholder="New User"
+              value={this.state.newUser}
+              onChange={this.handleChangeUser}
+            />
+            <button onClick={this.handleNewUser}>Update Identity</button>
+          </form>
+        </div>
+        <div className="ChatBox">
+          {this.state.messages.map(message =>
+            message.user === this.state.user ? (
+              <div className="Message User">
+                <div className="Message-Text">{message.text}</div>
+                <div className="Message-User">{message.user}</div>
+              </div>
+            ) : (
+              <div className="Message Other">
+                <div className="Message-Text">{message.text}</div>
+                <div className="Message-User">{message.user}</div>
+              </div>
+            )
+          )}
+        </div>
+        <form onSubmit={this.handleSubmit} className="NewMessage-Container">
+          <input value={this.state.newText} onChange={this.handleChange} />
+          <button>Send</button>
+        </form>
+      </div>
+    );
+  }
+}

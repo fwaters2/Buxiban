@@ -1,0 +1,76 @@
+.Chatroom-Container {
+  background-color: lightgrey;
+  text-align: center;
+
+}
+.Chat-Header{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between
+}
+.CurrentUser{
+  font-size: 8pt;
+ width: 125px;
+}
+.NewUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.NewUser input{
+  text-align: center;
+ width: 125px;
+}
+.NewUser button{
+ width: 125px
+}
+.ChatBox {
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: white;
+  margin: 0 10px;
+  
+  border: 2px solid black;
+  height: 250px;
+  overflow: auto;
+  
+}
+.Message {
+  padding: 5px 10px;
+max-width: 200px;
+text-align: left;
+  
+  margin: 3px;
+}
+.User {
+  background-color: lightblue;
+  align-self: flex-end;
+  border-radius: 15px 15px 0 15px;
+}
+.Other {
+  background-color: salmon;
+  border-radius: 15px 15px 15px 0;
+  align-self: flex-start;
+}
+
+.Message-User {
+  font-size: 6pt;
+  text-align: right;
+  font-weight: bold;
+}
+
+.NewMessage-Container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px 10px 10px;
+  background-color: black;
+  border: 2px solid black;
+  justify-content: center;
+}
+.NewMessage-Container button {
+  width: 20%;
+}
+.NewMessage-Container input {
+  width: 80%;
+}

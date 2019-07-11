@@ -1,0 +1,75 @@
+.Schedule-Container{
+    background-color: lightgray;
+    text-align: center;
+
+}
+.Schedule-Container li{
+    text-align: left;
+}
+.Container-Month{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:calc(100% - 0.4em);
+    padding: .5em 0.2em;
+    background-color:salmon;
+    border: 2px solid black;
+}
+.Title{
+    background-color:rgb(231, 231, 231);
+    padding: 2px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.Container-Week{
+    display:flex;
+    flex-direction: row;
+    background-color: lightblue;
+    justify-content: space-between;
+   
+}
+.Container-Week button{
+    height: 2em;
+    margin: auto 0;
+}
+.Container-Day{
+    display: flex;
+    flex-direction: column;
+    background-color: salmon;
+    width:3em;
+    height:3em;
+    padding:4px;
+    border-radius:100%;
+    text-align: center;
+    font-size: .8em;
+    font-weight: bold;
+    border: 2px solid red;
+    margin: 2px;
+}
+.Selected{
+    border: salmon;
+    background-color: red;
+   
+}
+.Container-TimeSlots{
+    display: flex;
+    flex-direction: column;
+    background-color: salmon;
+    text-align: center;
+    height: 500px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.Day-Title{
+    font-weight: bold;
+
+padding: 5px;
+}
+.Container-Time{
+    background-color: lightblue;
+    min-height:100px;
+    margin: 3px;
+    border-radius:5px;
+    text-align:left;
+    padding: 10px;
+}
