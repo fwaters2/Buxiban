@@ -4,6 +4,9 @@ export default class CalDynamic extends Component {
   render() {
     return (
       <div>
+        {this.props.user==="Guest" ?
+        <h3>Not signed in!</h3> :
+        <div>
         <div className="Day-Title">{this.props.user}'s Tuesday Schedule</div>
         <div className="Container-Time">
           <h3>4:50-6:50 1LQ Lvl 3</h3>
@@ -21,6 +24,7 @@ export default class CalDynamic extends Component {
             }
           </p>
         </div>
+        </div>}
       </div>
     );
   }

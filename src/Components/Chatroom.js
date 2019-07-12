@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./Chatroom.css";
-import Messages from "./Chat/Messages";
 import Firebase from "../Utils/Firebase";
-import { thisExpression } from "@babel/types";
 
 export default class Chatroom extends Component {
   constructor(props) {
@@ -57,7 +55,7 @@ export default class Chatroom extends Component {
     e.preventDefault();
     this.setState({
       user: this.state.newUser,
-      newUser:""
+      newUser: ""
     });
   };
   render() {
@@ -82,8 +80,8 @@ export default class Chatroom extends Component {
           )}
         </div>
         <form onSubmit={this.handleSubmit} className="NewMessage-Container">
-          <input value={this.state.newText} onChange={this.handleChange} />
-          <button>Send</button>
+          <textarea value={this.state.newText} onChange={this.handleChange} />
+          <button onClick={this.handleSubmit}>Send</button>
         </form>
       </div>
     );

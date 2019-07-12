@@ -6,11 +6,12 @@ import CalGeneral from "./Components/CalGeneral";
 import CalDynamic from "./Components/CalDynamic";
 import Outline from "./Development/Outline";
 import Login from "./Components/Header/Login";
+import Form from "./Components/UserCal/Form";
 const pages = [
   "Chat Room",
   "Class Schedule",
   "Notice Board",
-  "Dynamic Schedule"
+  "My Schedule"
 ];
 export default function Home(props) {
   const [devPage, togglePage] = React.useState("");
@@ -50,9 +51,9 @@ export default function Home(props) {
         <div />
       )}
       {devPage === "Notice Board" ? <NoticeBoard /> : <div />}
-      {devPage === "Dynamic Schedule" ? (
+      {devPage === "My Schedule" ? (
         <div>
-          <Schedule content={<CalDynamic user={props.user}/>} />
+          <Form user={props.user} />
         </div>
       ) : (
         <div />

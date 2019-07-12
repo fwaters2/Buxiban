@@ -7,6 +7,8 @@
 .Chatroom-Container {
   background-color: lightgrey;
   text-align: center;
+  max-width: 500px;
+  margin: auto;
 }
 .Chat-Header {
   display: flex;
@@ -32,6 +34,7 @@
   flex-direction: column-reverse;
   background-color: white;
   margin: 0 10px;
+  
   border: 2px solid black;
   height: 250px;
   overflow: auto;
