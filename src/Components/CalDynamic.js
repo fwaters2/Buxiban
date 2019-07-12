@@ -4,7 +4,7 @@ export default class CalDynamic extends Component {
   render() {
     return (
       <div>
-        <div className="Day-Title">JEFF'S Tuesday Schedule</div>
+        <div className="Day-Title">{this.props.user}'s Tuesday Schedule</div>
         <div className="Container-Time">
           <h3>4:50-6:50 1LQ Lvl 3</h3>
           <p>

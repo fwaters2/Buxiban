@@ -64,20 +64,11 @@ export default class Chatroom extends Component {
     return (
       <div className="Chatroom-Container">
         <div className="Chat-Header">
-          <div className="CurrentUser">Signed in as<br/><strong>{this.state.user}</strong></div>
           <h3>Chat Room</h3>
-          <form className="NewUser" onSubmit={this.handleNewUser}>
-            <input
-              placeholder="New User"
-              value={this.state.newUser}
-              onChange={this.handleChangeUser}
-            />
-            <button onClick={this.handleNewUser}>Update Identity</button>
-          </form>
         </div>
         <div className="ChatBox">
           {this.state.messages.map(message =>
-            message.user === this.state.user ? (
+            message.user === this.props.user ? (
               <div className="Message User">
                 <div className="Message-Text">{message.text}</div>
                 <div className="Message-User">{message.user}</div>

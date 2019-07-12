@@ -6,12 +6,6 @@ export default class Schedule extends Component {
   render() {
     return (
       <div className="Schedule-Container">
-        Schedule
-        <ul>
-          <li>Title with month changer</li>
-          <li>Week days, with week changer</li>
-          <li>Time slots (class slots?)</li>
-        </ul>
         <div className="Container-Month">
           <button>Prev.</button>
           <div className="Title">July</div>

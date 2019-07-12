@@ -5,11 +5,11 @@ import NoticeBoard from "./Components/NoticeBoard";
 import CalGeneral from "./Components/CalGeneral";
 import CalDynamic from "./Components/CalDynamic";
 import Outline from "./Development/Outline";
+import Login from "./Components/Header/Login";
 const pages = [
   "Chat Room",
   "Class Schedule",
   "Notice Board",
-  "Payslip Generator",
   "Dynamic Schedule"
 ];
 export default function Home(props) {
@@ -23,9 +23,8 @@ export default function Home(props) {
       <button style={{ width: "100%" }} onClick={props.toggleOutline}>
         Toggle Outline
       </button>
-
       {props.outline ? <Outline /> : null}
-
+      <Login user={props.user} changeUser={props.changeUser}/>
       <div
         style={{
           display: "flex",
@@ -42,32 +41,18 @@ export default function Home(props) {
         ))}
       </div>
       <hr />
-      {devPage === "Chat Room" ? <Chatroom /> : <div />}
+      {devPage === "Chat Room" ? <Chatroom user={props.user}/> : <div />}
       {devPage === "Class Schedule" ? (
         <div>
-          We are looking at the class schedule
           <Schedule content={<CalGeneral />} />
         </div>
       ) : (
         <div />
       )}
       {devPage === "Notice Board" ? <NoticeBoard /> : <div />}
-      {devPage === "Payslip Generator" ? (
-        <div>
-          We are checking out Payslip Generator
-          <div>
-            23 hours taught
-            <br />
-            $13,800 owed
-          </div>
-        </div>
-      ) : (
-        <div />
-      )}
       {devPage === "Dynamic Schedule" ? (
         <div>
-          <div>We are checking out the dynamic schedule</div>
-          <Schedule content={<CalDynamic />} />
+          <Schedule content={<CalDynamic user={props.user}/>} />
         </div>
       ) : (
         <div />
