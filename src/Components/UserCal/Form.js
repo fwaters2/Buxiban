@@ -20,7 +20,9 @@ export default class Form extends Component {
       .where("user", "==", this.props.user)
       .onSnapshot(snapshot => {
         snapshot.forEach(doc => {
+          
           newClasses.push({
+            id: doc.id,
             user: doc.data().user,
             Class: doc.data().Class,
             Day: doc.data().Day,
@@ -58,15 +60,15 @@ export default class Form extends Component {
     const db = Firebase.firestore();
     db.collection("Classes").add(newClass);
     //clearState
-      this.setState({
+    this.setState({
       aClass: "",
       Time: "14:00",
       Day: "Monday",
-      Note: "",
+      Note: ""
     });
   };
 
-  render() {console.log(this.state)
+  render() {
     return (
       <div>
         <UserCal classDB={this.state.classDB} user={this.props.user} />

@@ -30,7 +30,13 @@ export default function UserCal(props) {
                 )[0] === undefined ? (
                   <td style={{ backgroundColor: "salmon" }} />
                 ) : (
-                  <td style={{ backgroundColor: "lightgreen" }}>
+                  <td
+                    id={
+                      props.classDB.filter(aClass => aClass.Day === day)[0].id
+                    }
+                    style={{ backgroundColor: "lightgreen" }}
+                    onClick={(e)=>alert(e.target.id)}
+                  >
                     {
                       props.classDB.filter(aClass => aClass.Day === day)[0]
                         .Class

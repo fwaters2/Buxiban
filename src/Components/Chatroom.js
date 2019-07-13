@@ -6,7 +6,6 @@ export default class Chatroom extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: "Guest",
       newText: "",
       messages: [],
       newUser: ""
@@ -33,7 +32,6 @@ export default class Chatroom extends Component {
     this.setState({
       newText: e.target.value
     });
-    console.log(e.target.value)
   };
   handleSubmit = e => {
     e.preventDefault();
@@ -41,7 +39,7 @@ export default class Chatroom extends Component {
     db.collection("Messages").add({
       id: Date.parse(new Date()),
       text: this.state.newText,
-      user: this.state.user
+      user: this.props.user
     });
     this.setState({
       newText: ""
@@ -81,7 +79,7 @@ export default class Chatroom extends Component {
           )}
         </div>
         <form onSubmit={this.handleSubmit} className="NewMessage-Container">
-          <textarea value={this.state.newText} onChange={this.handleChange}></textarea>
+          <textarea value={this.state.newText} onChange={this.handleChange} />
           <button onClick={this.handleSubmit}>Send</button>
         </form>
       </div>
