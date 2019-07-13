@@ -33,12 +33,13 @@ export default class Chatroom extends Component {
     this.setState({
       newText: e.target.value
     });
+    console.log(e.target.value)
   };
   handleSubmit = e => {
     e.preventDefault();
     const db = Firebase.firestore();
     db.collection("Messages").add({
-      id: Date(),
+      id: Date.parse(new Date()),
       text: this.state.newText,
       user: this.state.user
     });
@@ -67,12 +68,12 @@ export default class Chatroom extends Component {
         <div className="ChatBox">
           {this.state.messages.map(message =>
             message.user === this.props.user ? (
-              <div className="Message User">
+              <div className="Message User" key={message.time}>
                 <div className="Message-Text">{message.text}</div>
                 <div className="Message-User">{message.user}</div>
               </div>
             ) : (
-              <div className="Message Other">
+              <div className="Message Other" key={message.time}>
                 <div className="Message-Text">{message.text}</div>
                 <div className="Message-User">{message.user}</div>
               </div>
@@ -80,7 +81,7 @@ export default class Chatroom extends Component {
           )}
         </div>
         <form onSubmit={this.handleSubmit} className="NewMessage-Container">
-          <textarea value={this.state.newText} onChange={this.handleChange} />
+          <textarea value={this.state.newText} onChange={this.handleChange}></textarea>
           <button onClick={this.handleSubmit}>Send</button>
         </form>
       </div>

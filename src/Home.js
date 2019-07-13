@@ -3,16 +3,10 @@ import Schedule from "./Components/Schedule";
 import Chatroom from "./Components/Chatroom";
 import NoticeBoard from "./Components/NoticeBoard";
 import CalGeneral from "./Components/CalGeneral";
-import CalDynamic from "./Components/CalDynamic";
 import Outline from "./Development/Outline";
 import Login from "./Components/Header/Login";
 import Form from "./Components/UserCal/Form";
-const pages = [
-  "Chat Room",
-  "Class Schedule",
-  "Notice Board",
-  "My Schedule"
-];
+const pages = ["Chat Room", "Class Schedule", "Notice Board", "My Schedule"];
 export default function Home(props) {
   const [devPage, togglePage] = React.useState("");
   function changePage(e) {
@@ -25,7 +19,7 @@ export default function Home(props) {
         Toggle Outline
       </button>
       {props.outline ? <Outline /> : null}
-      <Login user={props.user} changeUser={props.changeUser}/>
+      <Login user={props.user} changeUser={props.changeUser} />
       <div
         style={{
           display: "flex",
@@ -34,7 +28,7 @@ export default function Home(props) {
         }}
       >
         {pages.map(page => (
-          <div>
+          <div key={page}>
             <button id={page} onClick={changePage}>
               {page}
             </button>
@@ -42,7 +36,7 @@ export default function Home(props) {
         ))}
       </div>
       <hr />
-      {devPage === "Chat Room" ? <Chatroom user={props.user}/> : <div />}
+      {devPage === "Chat Room" ? <Chatroom user={props.user} /> : <div />}
       {devPage === "Class Schedule" ? (
         <div>
           <Schedule content={<CalGeneral />} />
@@ -53,7 +47,11 @@ export default function Home(props) {
       {devPage === "Notice Board" ? <NoticeBoard /> : <div />}
       {devPage === "My Schedule" ? (
         <div>
-          <Form user={props.user} />
+          {props.user === "Guest" ? (
+            <h2>Please sign in</h2>
+          ) : (
+            <Form user={props.user} />
+          )}
         </div>
       ) : (
         <div />
